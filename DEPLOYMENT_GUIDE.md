@@ -436,7 +436,19 @@ git push origin main
 
 ## Troubleshooting
 
-### Issue: "Blank page with only background colors" (MOST COMMON)
+### Issue: "Cannot POST /auth/register" or "404 Not Found" on API calls
+
+**Symptoms:** Frontend loads but login/register fails with `Cannot POST /auth/register` or 404 errors
+
+**SOLUTION - Already Fixed! Just Wait for Redeploy:**
+1. This was a route ordering issue - the catch-all route was intercepting API calls
+2. The fix has been pushed to GitHub
+3. Render will automatically redeploy (takes 3-5 minutes)
+4. Watch your Render dashboard → Logs tab
+5. Once you see "Your service is live 🎉", refresh your browser
+6. All APIs should now work!
+
+### Issue: "Blank page with only background colors"
 
 **Symptoms:** App loads, you see the purple/pink gradient background, but no content appears. Console shows errors like `TypeError: n.map is not a function`
 

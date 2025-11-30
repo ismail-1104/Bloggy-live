@@ -39,11 +39,11 @@ const Settings = () => {
       data.append("file", file);
       updatedUser.profilePic = fileName;
       try {
-        await axios.post("/upload", data);
+        await axios.post("/api/upload", data);
       } catch (err) {}
     }
     try {
-      const res = await axios.put("/user/" + user._id, updatedUser);
+      const res = await axios.put("/api/user/" + user._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {

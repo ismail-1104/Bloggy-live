@@ -10,7 +10,7 @@ const Sidebar = () => {
   useEffect(() => {
     const getCats = async () => {
       try {
-        const res = await axios.get("/categories");
+        const res = await axios.get("/api/categories");
         // Ensure we set an array, even if API returns something else
         setCats(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
