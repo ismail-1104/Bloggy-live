@@ -6,6 +6,14 @@
     padding: 1rem;
 }
 
+.noPosts {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 2rem;
+}
+
 @media screen and (max-width: 768px) {
     .posts {
         grid-template-columns: 1fr;

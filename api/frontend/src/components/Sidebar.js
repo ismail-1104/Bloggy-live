@@ -9,8 +9,14 @@ const Sidebar = () => {
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
-      setCats(res.data);
+      try {
+        const res = await axios.get("/categories");
+        // Ensure we set an array, even if API returns something else
+        setCats(Array.isArray(res.data) ? res.data : []);
+      } catch (err) {
+        console.log("Error fetching categories:", err);
+        setCats([]); // Set empty array on error
+      }
     };
     getCats();
   }, []);

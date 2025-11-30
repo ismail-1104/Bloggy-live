@@ -5,9 +5,13 @@ const Posts = ({ posts }) => {
   return (
     <>
       <div className="posts">
-        {posts.map((p) => (
-          <Post post={p} />
-        ))}
+        {Array.isArray(posts) && posts.length > 0 ? (
+          posts.map((p) => (
+            <Post key={p._id} post={p} />
+          ))
+        ) : (
+          <p className="noPosts">No posts yet. Create your first post!</p>
+        )}
       </div>
     </>
   );

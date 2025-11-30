@@ -247,7 +247,17 @@ Render is a free hosting platform perfect for MERN stack applications.
 2. Select **"Web Service"**
 3. Click **"Build and deploy from a Git repository"** → Next
 4. Find your `bloggy` repository and click **"Connect"**
-   - If you don't see it, click "Configure account" and grant Render access to your repositories
+   - **If you only see 1 repository instead of all your repos:**
+     - Click on your **account name/profile picture** (top right)
+     - Select **"Account Settings"**
+     - Scroll down to **"Git Integrations"** or **"GitHub"** section
+     - Click **"Configure"** or **"Edit"** next to GitHub
+     - This will take you to GitHub's app permissions page
+     - Under "Repository access", change from **"Only select repositories"** to **"All repositories"**
+     - OR manually select which repositories Render can access
+     - Click **"Save"** on GitHub
+     - Go back to Render and refresh - you should now see all your repositories
+   - Alternative: Click **"+ Connect repository"** at the bottom of the list to add more repos
 
 ### 5.3 Configure Web Service Settings
 
@@ -330,6 +340,15 @@ Once deployment succeeds:
 1. Click your Render URL: `https://bloggy-app.onrender.com`
 2. **Note:** First load may take 30-60 seconds if the service was sleeping (free tier behavior)
 3. The homepage should load correctly
+
+**If you see a blank page with only background colors:**
+- Press **F12** to open browser console
+- Check the **Console** tab for errors (look for red error messages)
+- Common issues:
+  - **CORS errors:** API calls being blocked
+  - **404 errors:** Frontend trying to call wrong API endpoint
+  - **Network errors:** Backend not responding
+- See the troubleshooting section below for solutions
 
 ### 6.2 Complete Feature Test
 
@@ -416,6 +435,74 @@ git push origin main
 ---
 
 ## Troubleshooting
+
+### Issue: "Blank page with only background colors" (MOST COMMON)
+
+**Symptoms:** App loads, you see the purple/pink gradient background, but no content appears
+
+**This is usually a proxy/API configuration issue. Try these solutions:**
+
+**Solution 1: Check Browser Console (MOST IMPORTANT)**
+1. Press **F12** to open Developer Tools
+2. Go to **Console** tab
+3. Look for errors (red text)
+4. Common errors and fixes:
+
+   **If you see "Failed to fetch" or "Network Error":**
+   - The frontend can't reach the backend APIs
+   - This is normal on first load (service waking up)
+   - Wait 60 seconds and refresh
+
+   **If you see 404 errors for /api/... routes:**
+   - Check that Root Directory is set to `api` in Render
+   - Verify the backend is running (check Render logs)
+
+   **If you see CORS errors:**
+   ```powershell
+   # Add CORS to your backend
+   cd c:\Projects\Bloggy-master\api
+   npm install cors
+   ```
+   
+   Then update `api/index.js`, add at the top after express:
+   ```javascript
+   const cors = require('cors');
+   app.use(cors());
+   ```
+   
+   Then commit and push:
+   ```powershell
+   git add .
+   git commit -m "Add CORS support"
+   git push origin main
+   ```
+
+**Solution 2: Verify Environment Variables**
+1. Go to Render Dashboard → Your Service → Environment
+2. Make sure these are set:
+   - `NODE_ENV` = `production`
+   - `MONGO_URI` = your full MongoDB connection string
+   - `PORT` = `10000`
+3. If you changed any, Render will auto-redeploy
+
+**Solution 3: Check Render Logs for Errors**
+1. Go to your Render service
+2. Click "Logs" tab
+3. Look for error messages after "Your service is live"
+4. If you see errors, they'll tell you what's wrong
+
+**Solution 4: Wait for Service to Wake Up**
+- On free tier, services sleep after inactivity
+- First request takes 30-60 seconds
+- **Just wait and keep refreshing every 15 seconds**
+- Once it wakes up, it should work
+
+**Solution 5: Check Network Tab**
+1. Press F12 → Go to **Network** tab
+2. Refresh the page
+3. Look for failed requests (red status codes)
+4. Check if `/api/post` or other API calls are failing
+5. Click on failed requests to see error details
 
 ### Issue: "Database connection failed"
 
