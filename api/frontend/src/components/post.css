@@ -1,0 +1,201 @@
+.post{
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 0.6s ease-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 650px;
+}
+
+.post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.post:hover{
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+}
+
+.post:hover::before {
+    opacity: 1;
+}
+
+.postImg{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: all 0.6s ease;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.post:hover .postImg{
+    transform: scale(1.15);
+    filter: brightness(1.15) saturate(1.2);
+}
+
+.postInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.postCats{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.postCat{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: white;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    padding: 6px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.postCat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.postCat:hover{
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.5);
+}
+
+.postCat:hover::before {
+    left: 100%;
+}
+
+.postTitle{
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 12px;
+    cursor: pointer;
+    text-align: center;
+    color: var(--text-primary);
+    transition: all 0.4s ease;
+    line-height: 1.4;
+    background: linear-gradient(135deg, #0f172a 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.postTitle:hover{
+    transform: scale(1.03);
+    filter: brightness(1.2);
+}
+
+.postDate{
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    border-radius: 20px;
+}
+
+.postDate::before {
+    content: '📅';
+    font-size: 14px;
+}
+
+.postDesc{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-top: 15px;
+    padding: 0 1.5rem 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    flex: 1;
+    min-height: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .post {
+        max-height: none;
+    }
+
+    .postImg {
+        height: 220px;
+    }
+
+    .postTitle {
+        font-size: 20px;
+    }
+
+    .postDesc {
+        font-size: 14px;
+        -webkit-line-clamp: 2;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .post {
+        max-height: 600px;
+    }
+
+    .postImg {
+        height: 250px;
+    }
+
+    .postTitle {
+        font-size: 20px;
+    }
+
+    .postDesc {
+        -webkit-line-clamp: 2;
+    }
+}

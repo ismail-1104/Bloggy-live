@@ -1,0 +1,167 @@
+.register {
+  min-height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.register::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -350px;
+  left: -250px;
+  animation: pulse 6s ease-in-out infinite;
+}
+
+.register::after {
+  content: '';
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -275px;
+  right: -200px;
+  animation: pulse 7s ease-in-out infinite;
+}
+
+  .registerTitle{
+    font-size: 64px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 2rem;
+    z-index: 10;
+    animation: fadeIn 0.8s ease-out;
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .registerForm{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 3.5rem;
+    border-radius: 30px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    animation: fadeIn 1s ease-out;
+    min-width: 420px;
+    gap: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .registerForm > label{
+    margin: 10px 0 5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .registerInput{
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+    border: 2px solid rgba(236, 72, 153, 0.2);
+    border-radius: 15px;
+    font-size: 15px;
+    transition: all 0.4s ease;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .registerInput:focus{
+    outline: none;
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .registerLoginButton{
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    background: white;
+    cursor: pointer;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 32px;
+    color: #ec4899;
+    border-radius: 30px;
+    font-weight: 700;
+    z-index: 10;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+  }
+
+  .registerLoginButton:hover{
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 15px 50px rgba(251, 191, 36, 0.4);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    border-color: transparent;
+  }
+
+  .registerButton{
+    margin-top: 30px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ec4899 0%, #6366f1 100%);
+    border: none;
+    color: white;
+    border-radius: 15px;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 35px rgba(99, 102, 241, 0.5);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .registerButton:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(99, 102, 241, 0.6);
+    background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+  }
+
+  .registerButton:active{
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 768px) {
+    .registerForm {
+      min-width: 340px;
+      padding: 2.5rem;
+    }
+
+    .registerTitle {
+      font-size: 48px;
+    }
+
+    .registerLoginButton {
+      top: 90px;
+      right: 20px;
+      padding: 12px 24px;
+    }
+  }
+

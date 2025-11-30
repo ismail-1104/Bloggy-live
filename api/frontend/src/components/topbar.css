@@ -1,0 +1,333 @@
+.top{
+    width: 100%;
+    height: 75px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    z-index: 999;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+    padding: 0 3rem;
+    animation: slideIn 0.6s ease-out;
+    transition: all 0.4s ease;
+}
+
+.top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+.top:hover {
+    box-shadow: 0 12px 48px rgba(236, 72, 153, 0.5);
+    transform: translateY(-2px);
+}
+
+.topLeft, .topRight{
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.topRight {
+    justify-content: flex-end;
+}
+
+.topRight > a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topCentre{
+    flex: 6;
+}
+
+.topIcon{
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    padding: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.topIcon:hover{
+    color: #fbbf24;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+}
+
+.topImg{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid white;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+    animation: glow 3s ease-in-out infinite;
+}
+
+.topImg:hover{
+    transform: scale(1.15) rotate(10deg);
+    border-color: #fbbf24;
+    box-shadow: 0 10px 40px rgba(251, 191, 36, 0.6);
+}
+
+.topList{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 8px;
+}
+
+.topListItem{
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    color: white;
+    letter-spacing: 1px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.topListItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.topListItem:hover{
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+}
+
+.topListItem:hover::before {
+    opacity: 1;
+}
+
+.topSearchIcon{
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.topSearchIcon:hover{
+    color: #fbbf24;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.2) rotate(90deg);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+.hamburger i {
+    font-size: 24px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* Overlay for mobile menu */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    animation: fadeIn 0.3s ease;
+}
+
+.mobileOnly {
+    display: none;
+}
+
+.topRightList {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .top {
+        padding: 0 1rem;
+        height: 65px;
+        justify-content: space-between;
+    }
+
+    .topLeft {
+        flex: none;
+        gap: 8px;
+    }
+
+    .topRight {
+        flex: none;
+        gap: 8px;
+    }
+
+    .topLeft .topIcon {
+        display: none;
+    }
+
+    .topLeft .topIcon:first-child {
+        display: block;
+    }
+
+    .hamburger {
+        display: flex;
+        order: 2;
+    }
+
+    .topCentre {
+        position: fixed;
+        top: 65px;
+        left: -100%;
+        width: 280px;
+        height: calc(100vh - 65px);
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2rem 0;
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+    }
+
+    .topCentre.active {
+        left: 0;
+    }
+
+    .overlay {
+        display: block;
+    }
+
+    .topList {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .topListItem {
+        width: 100%;
+        text-align: left;
+        border-radius: 0;
+        padding: 18px 24px;
+        background: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 15px;
+    }
+
+    .topListItem:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(8px);
+        box-shadow: none;
+    }
+
+    .topListItem::before {
+        display: none;
+    }
+
+    .mobileOnly {
+        display: block;
+    }
+
+    .topRightList {
+        display: none;
+    }
+
+    .topIcon {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .topImg {
+        width: 42px;
+        height: 42px;
+    }
+
+    .topSearchIcon {
+        font-size: 20px;
+        padding: 10px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .top {
+        padding: 0 0.75rem;
+    }
+
+    .topCentre {
+        width: 240px;
+    }
+
+    .topImg {
+        width: 38px;
+        height: 38px;
+    }
+
+    .topIcon {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .topSearchIcon {
+        font-size: 18px;
+        padding: 8px;
+        margin-left: 8px;
+    }
+}

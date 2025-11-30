@@ -1,0 +1,187 @@
+.settings{
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.settingsWrapper{
+    flex: 9;
+    padding: 2rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.settingsTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid rgba(102, 126, 234, 0.2);
+}
+
+.settingsUpdateTitle{
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Poppins', sans-serif;
+}
+
+.settingsDeleteTitle{
+    color: #f56565;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(245, 101, 101, 0.1);
+}
+
+.settingsDeleteTitle:hover{
+    background: #f56565;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(245, 101, 101, 0.3);
+}
+
+.settingsForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.settingsPP{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 20px;
+}
+
+.settingsPP > img{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 4px solid #667eea;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.settingsPP > img:hover{
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 12px 30px rgba(118, 75, 162, 0.4);
+}
+
+.settingsPPIcon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.settingsPPIcon:hover{
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.4);
+}
+
+.settingsForm > label{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+.settingsForm > input{
+    color: var(--text-secondary);
+    margin: 5px 0;
+    padding: 15px 20px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    background: rgba(102, 126, 234, 0.03);
+}
+
+.settingsForm > input:focus{
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+}
+
+.settingsSubmit{
+    width: 180px;
+    align-self: center;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 24px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.settingsSubmit:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(118, 75, 162, 0.5);
+}
+
+.settingsSubmit:active{
+    transform: translateY(-1px);
+}
+
+@media screen and (max-width: 1024px) {
+    .settings {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .settings {
+        padding: 1rem;
+    }
+
+    .settingsWrapper {
+        padding: 1.5rem;
+    }
+
+    .settingsTitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .settingsUpdateTitle {
+        font-size: 26px;
+    }
+
+    .settingsPP > img {
+        width: 80px;
+        height: 80px;
+    }
+}

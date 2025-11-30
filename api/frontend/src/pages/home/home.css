@@ -1,0 +1,21 @@
+.home{
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@media screen and (max-width: 1024px) {
+    .home {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        padding: 1rem;
+    }
+}
