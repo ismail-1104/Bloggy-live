@@ -27,6 +27,8 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+// API routes - MUST come before static file serving
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded.");
 });
@@ -36,12 +38,12 @@ app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/categories", categoryRoute);
 
-// Serve static assets in production
+// Serve static assets in production - MUST come after API routes
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-  // Any route that is not an API route will serve the React app
+  // Catch-all route for React Router - ONLY for non-API routes
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
   });
