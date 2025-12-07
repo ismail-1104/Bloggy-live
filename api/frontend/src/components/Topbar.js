@@ -78,7 +78,7 @@ const Topbar = () => {
               <>
                 <img
                   className="topImg"
-                  src={`http://localhost:5000/images/${user.profilePic}`}
+                  src={user.profilePic || "https://via.placeholder.com/150"}
                   alt=""
                 />
                 <i className="topSearchIcon fa-sharp fa-solid fa-magnifying-glass"></i>

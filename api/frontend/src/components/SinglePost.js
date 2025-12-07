@@ -16,8 +16,6 @@ const SinglePost = () => {
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
-  const PF = `http://localhost:5000/images/${post.photo}`;
-
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("/api/post/" + path);
@@ -51,7 +49,7 @@ const SinglePost = () => {
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        {post.photo && <img className="singlePostImg" src={PF} alt="" />}
+        {post.photo && <img className="singlePostImg" src={post.photo} alt="" />}
         {updateMode ? (
           <input
             type="text"

@@ -11,27 +11,34 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(express.json());
-
-app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use(express.json({ limit: '50mb' })); // Increase limit for Base64 images
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 connectDatabase();
 
-//to upload image
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
-});
+//to upload image - using memory storage for Base64 conversion
+const storage = multer.memoryStorage();
 
-const upload = multer({ storage: storage });
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
+});
 
 // API routes - MUST come before static file serving
 app.post("/api/upload", upload.single("file"), (req, res) => {
-  res.status(200).json("File has been uploaded.");
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded" });
+    }
+    
+    // Convert buffer to Base64
+    const base64Image = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+    
+    res.status(200).json({ imageUrl: base64Image });
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({ error: "Failed to upload image" });
+  }
 });
 
 app.use("/api/auth", authRoute);

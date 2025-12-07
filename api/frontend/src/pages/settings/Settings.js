@@ -12,7 +12,6 @@ const Settings = () => {
   const [password, setPassword] = useState("");
 
   const { user, dispatch } = useContext(Context);
-  const PF = `http://localhost:5000/images/${user.profilePic}`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,13 +33,13 @@ const Settings = () => {
     
     if (file) {
       const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
       data.append("file", file);
-      updatedUser.profilePic = fileName;
       try {
-        await axios.post("/api/upload", data);
-      } catch (err) {}
+        const uploadRes = await axios.post("/api/upload", data);
+        updatedUser.profilePic = uploadRes.data.imageUrl; // Store Base64 string
+      } catch (err) {
+        console.error("Error uploading image:", err);
+      }
     }
     try {
       const res = await axios.put("/api/user/" + user._id, updatedUser);
@@ -60,7 +59,7 @@ const Settings = () => {
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Pitcure</label>
           <div className="settingsPP">
-            <img src={file ? URL.createObjectURL(file) : PF} alt="" />
+            <img src={file ? URL.createObjectURL(file) : (user.profilePic || "https://via.placeholder.com/150")} alt="" />
             <label htmlFor="fileInput">
               <i class="settingsPPIcon fa-solid fa-user"></i>
             </label>

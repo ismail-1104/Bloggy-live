@@ -18,18 +18,20 @@ const Write = () => {
     };
     if (file) {
       const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
       data.append("file", file);
-      newPost.photo = fileName;
       try {
-        await axios.post("/api/upload", data);
-      } catch (err) {}
+        const uploadRes = await axios.post("/api/upload", data);
+        newPost.photo = uploadRes.data.imageUrl; // Store Base64 string
+      } catch (err) {
+        console.error("Error uploading image:", err);
+      }
     }
     try {
       const res = await axios.post("/api/post", newPost);
       window.location.replace("/post/" + res.data._id);
-    } catch (err) {}
+    } catch (err) {
+      console.error("Error creating post:", err);
+    }
   };
   return (
     <div className="write">
