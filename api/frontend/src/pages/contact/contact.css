@@ -1,0 +1,194 @@
+.contact {
+  min-height: calc(100vh - 75px);
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactContainer {
+  max-width: 1200px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 30px;
+  padding: 3rem;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+.contactHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contactTitle {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f5576c 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.contactSubtitle {
+  font-size: 18px;
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+.contactContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 700;
+  color: #2c3e50;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+}
+
+.contactInput,
+.contactTextarea {
+  padding: 16px 20px;
+  border: 2px solid rgba(245, 87, 108, 0.2);
+  border-radius: 15px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  background: rgba(245, 87, 108, 0.05);
+}
+
+.contactInput:focus,
+.contactTextarea:focus {
+  outline: none;
+  border-color: #f5576c;
+  background: white;
+  box-shadow: 0 6px 25px rgba(245, 87, 108, 0.2);
+  transform: translateY(-2px);
+}
+
+.contactTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contactButton {
+  padding: 18px;
+  background: linear-gradient(135deg, #f5576c 0%, #4facfe 100%);
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 35px rgba(245, 87, 108, 0.4);
+}
+
+.contactButton:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 50px rgba(245, 87, 108, 0.5);
+}
+
+.contactButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.successMessage {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  animation: slideIn 0.5s ease-out;
+}
+
+.errorMessage {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .contactTitle {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .contact {
+    padding: 2rem 1rem;
+  }
+
+  .contactContainer {
+    padding: 2rem;
+  }
+
+  .contactTitle {
+    font-size: 32px;
+  }
+
+  .contactSubtitle {
+    font-size: 16px;
+  }
+
+  .infoCard {
+    padding: 1.5rem;
+  }
+}

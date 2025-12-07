@@ -4,6 +4,7 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
+const contactRoute = require("./routes/contact");
 const multer = require("multer");
 const path = require("path");
 require('dotenv').config();
@@ -37,6 +38,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/api/contact", contactRoute);
 
 // Serve static assets in production - MUST come after API routes
 if (process.env.NODE_ENV === 'production') {
